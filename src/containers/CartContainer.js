@@ -4,14 +4,24 @@ import PropTypes from 'prop-types';
 import Cart from '../components/Cart';
 import CartItem from '../components/CartItem';
 import CartResult from '../components/CartResult';
+import { MSG_CART_EMPTY } from '../constants/Message';
 
 class CartContainer extends Component {
+
+  showCart = cart => {
+    let result = <tr><th>{MSG_CART_EMPTY}</th></tr>;
+    if (cart.length > 0) {
+      result = cart.map((item, index) => <CartItem key={index} item={item} />) 
+    };
+    return result;
+  }
+
   render() {
     const { cart } = this.props;
     return (
       <Cart>
-        { cart.length && cart.map((item, index) => <CartItem key={index} item={item}/>) }
-        { cart.length && <CartResult cart={cart}/> }
+        { this.showCart(cart) }
+        <CartResult cart={cart}/>
       </Cart>
     )
   }

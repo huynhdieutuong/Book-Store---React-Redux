@@ -20,7 +20,7 @@ export default class Product extends Component {
   }
   
   render() {
-    const { product } = this.props;
+    const { product, onAddToCart } = this.props;
     return (
       <div className="col-md-3 product">
         <div className="card" style={{width: 18 + "rem"}}>
@@ -32,7 +32,7 @@ export default class Product extends Component {
               <p className="price">${product.price}</p>
               <p className="review">{this.showRating(product.rating)}</p>
             </div>
-            <button type="button" className="btn btn-primary">Add To Cart</button>
+            <button type="button" className="btn btn-primary" onClick={() => onAddToCart(product)}>Add To Cart</button>
           </div>
         </div>
       </div>
