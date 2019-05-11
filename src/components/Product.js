@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
 export default class Product extends Component {
+
   showRating = rating => {
     const solidStars = Math.floor(rating);
     const regularStars = Math.floor(5 - rating);
@@ -17,6 +18,7 @@ export default class Product extends Component {
     }
     return stars;
   }
+  
   render() {
     const { product } = this.props;
     return (
@@ -27,7 +29,7 @@ export default class Product extends Component {
             <h5 className="card-title">{product.name}</h5>
             <div className="card-content">
               <p className="author">{product.author}</p>
-              <p className="price">$ {product.price}</p>
+              <p className="price">${product.price}</p>
               <p className="review">{this.showRating(product.rating)}</p>
             </div>
             <button type="button" className="btn btn-primary">Add To Cart</button>

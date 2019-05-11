@@ -2,7 +2,7 @@ import React from 'react';
 import Navbar from './components/Navbar';
 import ProductsContainer from './containers/ProductsContainer';
 import Message from './components/Message';
-import Cart from './components/Cart';
+import CartContainer from './containers/CartContainer';
 
 function App() {
   return (
@@ -14,7 +14,7 @@ function App() {
 
         <Message />
 
-        <Cart />
+        <CartContainer />
       </div>
     </div>
   );

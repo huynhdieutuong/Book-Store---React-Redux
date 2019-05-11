@@ -32,5 +32,8 @@ div.cart li.page-item span.page-link {
   width: 30px;
   cursor: pointer;
   text-align: center; }
+div.cart table tr th.total-title, div.cart table tr th.total-amount {
+  font-size: 25px;
+}
 
 /*# sourceMappingURL=style.css.map */
