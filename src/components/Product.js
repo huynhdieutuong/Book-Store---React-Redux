@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 
+import { MSG_ADD_TO_CART_SUCCESS } from '../constants/Message';
+
 export default class Product extends Component {
 
   showRating = rating => {
@@ -18,9 +20,15 @@ export default class Product extends Component {
     }
     return stars;
   }
+
+  addToCart = product => {
+    const { onAddToCart, onChangeMessage } = this.props;
+    onAddToCart(product);
+    onChangeMessage(MSG_ADD_TO_CART_SUCCESS);
+  }
   
   render() {
-    const { product, onAddToCart } = this.props;
+    const { product } = this.props;
     return (
       <div className="col-md-3 product">
         <div className="card" style={{width: 18 + "rem"}}>
@@ -32,7 +40,7 @@ export default class Product extends Component {
               <p className="price">${product.price}</p>
               <p className="review">{this.showRating(product.rating)}</p>
             </div>
-            <button type="button" className="btn btn-primary" onClick={() => onAddToCart(product)}>Add To Cart</button>
+            <button type="button" className="btn btn-primary" onClick={() => this.addToCart(product)}>Add To Cart</button>
           </div>
         </div>
       </div>

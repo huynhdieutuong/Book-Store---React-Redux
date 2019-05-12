@@ -6,9 +6,11 @@ const saveData = state => localStorage.setItem('CART', JSON.stringify(state));
 const initialState = data ? data : [];
 
 const cart = (state = initialState, action) => {
-  const { type, product, quantity } = action;
-  switch (type) {
+  let index = -1;
+  switch (action.type) {
+    // add to cart
     case types.ADD_TO_CART:
+      const { product, quantity } = action;
       for (let item of state) {
         if (item.product.id === product.id) {
           item.quantity += 1;
@@ -22,6 +24,14 @@ const cart = (state = initialState, action) => {
       });
       saveData(state);
       return [...state];
+
+    // delete item in cart
+    case types.DELETE_ITEM_IN_CART:
+      index = state.findIndex(item => item.product.id === action.item.product.id);
+      state.splice(index, 1);
+      saveData(state);
+      return [...state];
+
     default: 
       return [...state];
   }

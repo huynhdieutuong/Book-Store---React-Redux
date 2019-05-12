@@ -1,7 +1,7 @@
 import React from 'react';
 import Navbar from './components/Navbar';
 import ProductsContainer from './containers/ProductsContainer';
-import Message from './components/Message';
+import MessageContainer from './containers/MessageContainer';
 import CartContainer from './containers/CartContainer';
 
 function App() {
@@ -12,7 +12,7 @@ function App() {
       <div className="container">
         <ProductsContainer />
 
-        <Message />
+        <MessageContainer />
 
         <CartContainer />
       </div>

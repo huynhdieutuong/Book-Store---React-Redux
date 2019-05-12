@@ -1,6 +1,14 @@
 import React, { Component } from 'react';
+import { MSG_DELETE_PRODUCT_IN_CART_SUCCESS } from '../constants/Message';
 
 export default class CartItem extends Component {
+
+  deleteItemInCart = item => {
+    const { onDeleteItemInCart, onChangeMessage } = this.props;
+    onDeleteItemInCart(item);
+    onChangeMessage(MSG_DELETE_PRODUCT_IN_CART_SUCCESS);
+  }
+
   render() {
     const { item } = this.props;
     return (
@@ -18,7 +26,7 @@ export default class CartItem extends Component {
           </nav>
         </th>
         <th scope="col">${item.product.price * item.quantity}</th>
-        <th scope="col"><button type="button" className="btn btn-danger">Delete</button></th>
+        <th scope="col"><button type="button" className="btn btn-danger" onClick={() => this.deleteItemInCart(item)}>Delete</button></th>
       </tr>
     )
   }
