@@ -3,8 +3,20 @@ import { MSG_DELETE_PRODUCT_IN_CART_SUCCESS, MSG_UPDATE_CART_SUCCESS } from '../
 
 export default class CartItem extends Component {
   state = {
-    quantity: this.props.item.quantity
+    quantity: this.props.item.quantity,
+    quan: this.props.item.quantity
   };
+
+  componentDidUpdate() {
+    const { item } = this.props;
+    if (this.state.quan !== item.quantity) {
+      console.log('ren');
+      this.setState({
+        quantity: item.quantity,
+        quan: item.quantity
+      })
+    }
+  }
 
   onChange = event => {
     let { value, name } = event.target;
